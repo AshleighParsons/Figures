@@ -21,9 +21,21 @@ class SecondViewController: UIViewController {
         tableView.reloadData()
     }
     
+    
+    @IBAction func onDoneTap(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func clearTapped(_ sender: Any) {
         historyItems.removeAll()
         tableView.reloadData()
+        
+        if let viewController = self.presentingViewController as? SecondViewController {
+            DispatchQueue.main.async {
+                viewController.historyItems.removeAll()
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
 }
 

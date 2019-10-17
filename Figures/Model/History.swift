@@ -10,5 +10,5 @@ import Foundation
 
 class History {
     var equation: String? = ""
-    var answer: Double? = 0.0
+    var answer: Float? = 0.0
 }

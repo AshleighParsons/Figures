@@ -22,6 +22,9 @@ class FirstViewController: UIViewController {
     var operationSymbol = ""
     var operation = 0
     
+    var equation = ""
+    var answer: Float = 0.0
+    
     var historyItems: [History] = []
     
     @IBAction func numbers(_ sender: UIButton) {
@@ -69,32 +72,34 @@ class FirstViewController: UIViewController {
             performCalculation = true
         }
         else if sender.tag == 18 {
-            
-            
-            
             if operation == 12 {
-                lblScreen.text = String(format: "%0.2f", previousNumber.squareRoot())
+                answer = previousNumber.squareRoot()
+//                print(answer)
+                lblScreen.text = String(format: "%0.2f", answer)
             }
             else if operation == 13 {
-                lblScreen.text = String(format: "%0.2f", (previousNumber / numberDisplayed) * 100)
+                answer = (previousNumber / numberDisplayed) * 100
+                lblScreen.text = String(format: "%0.2f", answer)
             }
             else if operation == 14 {
-                lblScreen.text = String(format: "%0.2f", previousNumber / numberDisplayed)
+                answer = previousNumber / numberDisplayed
+                lblScreen.text = String(format: "%0.2f", answer)
             }
             else if operation == 15 {
-                lblScreen.text = String(format: "%0.2f", previousNumber * numberDisplayed)
+                answer = previousNumber * numberDisplayed
+                lblScreen.text = String(format: "%0.2f", answer)
             }
             else if operation == 16 {
-                lblScreen.text = String(format: "%0.2f", previousNumber - numberDisplayed)
+                answer = previousNumber - numberDisplayed
+                lblScreen.text = String(format: "%0.2f", answer)
             }
             else if operation == 17 {
-                lblScreen.text = String(format: "%0.2f", previousNumber + numberDisplayed)
+                answer = previousNumber + numberDisplayed
+                lblScreen.text = String(format: "%0.2f", answer)
             }
             lblSum.text = String(format: "%0.0f", previousNumber) + operationSymbol + String(format: "%0.0f", numberDisplayed)
             
-//            equation = lblSum.text
-//            saveAnswer(equation: equation, answer: answer)
-            
+//            answer = lblScreen.text
         }
         else if sender.tag == 11 {
             lblScreen.text = ""
@@ -103,17 +108,33 @@ class FirstViewController: UIViewController {
             numberDisplayed = 0
             operation = 0
         }
+
+        equation = String(format: "%0.0f", previousNumber) + operationSymbol + String(format: "%0.0f", numberDisplayed)
+        saveAnswer(equation: equation, answer: answer)
+    }
+    
+    @IBAction func onHistoryTab(_ sender: Any) {
+        performSegue(withIdentifier: "toHistory", sender: nil)
+    } 
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is SecondViewController {
+            let viewController = segue.destination as? SecondViewController
+            viewController?.historyItems = self.historyItems
+        }
     }
 }
 
 
 extension FirstViewController {
-    func saveAnswer(equation: String, answer: Double) {
+    func saveAnswer(equation: String, answer: Float) {
         let history = History()
 
         history.equation = equation
         history.answer = answer
 
         historyItems.append(history)
+        
+//        print(historyItems[0].equation)
     }
 }
