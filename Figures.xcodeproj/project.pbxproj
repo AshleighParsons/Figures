@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E5315D82357AA6A001564B4 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5315D72357AA6A001564B4 /* History.swift */; };
 		0EF3B7AA234F114800990F84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF3B7A9234F114800990F84 /* AppDelegate.swift */; };
 		0EF3B7AC234F114800990F84 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF3B7AB234F114800990F84 /* FirstViewController.swift */; };
 		0EF3B7AE234F114800990F84 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF3B7AD234F114800990F84 /* SecondViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E5315D72357AA6A001564B4 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		0EF3B7A6234F114800990F84 /* Figures.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Figures.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EF3B7A9234F114800990F84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EF3B7AB234F114800990F84 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -37,6 +39,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E5315D62357AA54001564B4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0E5315D72357AA6A001564B4 /* History.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		0EF3B79D234F114800990F84 = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +66,7 @@
 		0EF3B7A8234F114800990F84 /* Figures */ = {
 			isa = PBXGroup;
 			children = (
+				0E5315D62357AA54001564B4 /* Model */,
 				0EF3B7A9234F114800990F84 /* AppDelegate.swift */,
 				0EF3B7AB234F114800990F84 /* FirstViewController.swift */,
 				0EF3B7AD234F114800990F84 /* SecondViewController.swift */,
@@ -140,6 +151,7 @@
 			files = (
 				0EF3B7AE234F114800990F84 /* SecondViewController.swift in Sources */,
 				0EF3B7AA234F114800990F84 /* AppDelegate.swift in Sources */,
+				0E5315D82357AA6A001564B4 /* History.swift in Sources */,
 				0EF3B7AC234F114800990F84 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

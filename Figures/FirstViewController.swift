@@ -22,6 +22,8 @@ class FirstViewController: UIViewController {
     var operationSymbol = ""
     var operation = 0
     
+    var historyItems: [History] = []
+    
     @IBAction func numbers(_ sender: UIButton) {
         if performCalculation == true {
             lblScreen.text = String(sender.tag-1)
@@ -67,6 +69,9 @@ class FirstViewController: UIViewController {
             performCalculation = true
         }
         else if sender.tag == 18 {
+            
+            
+            
             if operation == 12 {
                 lblScreen.text = String(format: "%0.2f", previousNumber.squareRoot())
             }
@@ -86,6 +91,10 @@ class FirstViewController: UIViewController {
                 lblScreen.text = String(format: "%0.2f", previousNumber + numberDisplayed)
             }
             lblSum.text = String(format: "%0.0f", previousNumber) + operationSymbol + String(format: "%0.0f", numberDisplayed)
+            
+//            equation = lblSum.text
+//            saveAnswer(equation: equation, answer: answer)
+            
         }
         else if sender.tag == 11 {
             lblScreen.text = ""
@@ -95,46 +104,16 @@ class FirstViewController: UIViewController {
             operation = 0
         }
     }
-    
-    @IBAction func history(_ sender: Any) {
-        viewHistory()
-    }
-    
-    let darkView = UIView()
-    
-    let historyView : UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        
-        let hv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        
-        return hv
-    }()
-    
-    @objc func viewHistory() {
-        darkView.backgroundColor = UIColor(white: 0, alpha: 0.5)
-        
-        darkView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
-        
-        view.addSubview(darkView)
-        darkView.frame = view.frame
-        darkView.alpha = 0
-        
-        view.addSubview(historyView)
-        historyView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 200 )
-        
-        UIView.animate(withDuration: 0.5, animations: { self.darkView.alpha = 1})
-    }  
-    
-    @objc func handleDismiss() {
-        self.darkView.alpha = 0
-    }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-
-
 }
 
+
+extension FirstViewController {
+    func saveAnswer(equation: String, answer: Double) {
+        let history = History()
+
+        history.equation = equation
+        history.answer = answer
+
+        historyItems.append(history)
+    }
+}
