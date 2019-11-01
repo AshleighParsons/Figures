@@ -16,6 +16,9 @@ class FirstViewController: UIViewController {
     let Minus = 11
     let Multiply = 12
     let Divide = 13
+    let MemoryAdd = 14
+    let MemoryMinus = 15
+    let Recall = 16
     
     @IBOutlet var lblTotal : UILabel!
     @IBOutlet var lblSum : UILabel!
@@ -29,12 +32,19 @@ class FirstViewController: UIViewController {
     var historyItems: [History] = []
     
     var EquationDone : String = ""
-    var MemoryNumber : Double = 0.0
+    var SavedAnswer : NSInteger = 0
+    var MemoryNumber : NSInteger = 0
     
     func saveFirstNumber() {
-        Num1 = Int(CurrentNumber)!
-        CurrentNumber = "0"
-        printNumber()
+//        if Operand == Recall {
+//            Num1 = Int(MemoryNumber)
+//            CurrentNumber = "0"
+//            printNumber()
+//        } else {
+            Num1 = Int(CurrentNumber)!
+            CurrentNumber = "0"
+            printNumber()
+//        }
     }
     
     override func viewDidLoad() {
@@ -66,34 +76,61 @@ class FirstViewController: UIViewController {
             lblSum.text = ""
             printNumber()
         }
+        
+        if sender.tag == 16 {
+            Num1 = Int(MemoryNumber)
+            CurrentNumber = "0"
+            printNumber()
+        }
     }
     
-    @IBAction func pressMemory(sender: UIButton) {
-        if sender.tag == 14 {
-            MemoryNumber = Answer
-        }
-        if sender.tag == 15 {
-            Num1 = NSInteger(MemoryNumber)
-        }
-        if sender.tag == 16 {
-            MemoryNumber = 0
-        }
+//    @IBAction func pressMemory(sender: UIButton) {
+//        if Operand == MemoryAdd {
+//            MemoryNumber = SavedAnswer
+//        }
+//        if Operand == MemoryMinus {
+//            MemoryNumber = 0
+//        }
+//        if Operand == Recall {
+//            CurrentNumber = String(MemoryNumber)
+//            printNumber()
+//        }
+//    }
+    
+    @IBAction func addMemory(_ sender: Any) {
+        MemoryNumber = SavedAnswer
+    }
+    
+    @IBAction func minusMemory(_ sender: Any) {
+        MemoryNumber = 0
+    }
+    
+    @IBAction func recallMemory(_ sender: Any) {
+        CurrentNumber = String(MemoryNumber)
+        printNumber()
     }
     
     @IBAction func calculate(sender: UIButton) {
-        Num2 = Int(CurrentNumber)!
+        if Operand == Recall {
+            Num2 = Int(MemoryNumber)
+        } else {
+            Num2 = Int(CurrentNumber)!
+        }
         
         if Operand == Plus {
             Answer = Double(Num1 + Num2)
             EquationDone = String(Num1) + "+" + String(Num2)
+            SavedAnswer = Int(Answer)
         }
         if Operand == Minus {
             Answer = Double(Num1 - Num2)
             EquationDone = String(Num1) + "-" + String(Num2)
+            SavedAnswer = Int(Answer)
         }
         if Operand == Multiply {
             Answer = Double(Num1 * Num2)
             EquationDone = String(Num1) + "x" + String(Num2)
+            SavedAnswer = Int(Answer)
         }
         if Operand == Divide {
             if Num2 == 0 {
@@ -104,8 +141,9 @@ class FirstViewController: UIViewController {
                 present(alert, animated: true)
             }
             else {
-            Answer = Double(Num1) / Double(Num2)
-            EquationDone = String(Num1) + "÷" + String(Num2)
+                Answer = Double(Num1) / Double(Num2)
+                EquationDone = String(Num1) + "÷" + String(Num2)
+                SavedAnswer = Int(Answer)
             }
         }
         
@@ -116,10 +154,8 @@ class FirstViewController: UIViewController {
         CurrentNumber = String(Answer)
         Operand = Plus
         printNumber()
-//        pressMemory()
         
-//        ASH CHANGED HERE
-//        Answer = 0.0
+        Answer = 0.0
         CurrentNumber = "0"
     }
     

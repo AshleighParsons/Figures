@@ -159,7 +159,7 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="pressMemoryWithSender:" destination="9pv-A4-QxB" eventType="touchUpInside" id="IZa-N4-KDP"/>
+                                    <action selector="minusMemory:" destination="9pv-A4-QxB" eventType="touchUpInside" id="7CF-yg-zuz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="14" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5b6-PL-bYD">
@@ -171,7 +171,7 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="pressMemoryWithSender:" destination="9pv-A4-QxB" eventType="touchUpInside" id="R5I-zr-dTp"/>
+                                    <action selector="addMemory:" destination="9pv-A4-QxB" eventType="touchUpInside" id="ho8-pD-aTG"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQg-ih-hli">
@@ -231,7 +231,7 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="pressMemoryWithSender:" destination="9pv-A4-QxB" eventType="touchUpInside" id="JGy-vA-rme"/>
+                                    <action selector="recallMemory:" destination="9pv-A4-QxB" eventType="touchUpInside" id="Eqj-0p-8u9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="-2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgZ-mk-ZJN">
@@ -303,7 +303,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lWl-4w-MgX">
                                 <rect key="frame" x="-17" y="-22" width="409" height="669"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.67450980392156867" blue="0.11372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.93333333333333335" green="0.73725490196078436" blue="0.15294117647058825" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5zh-b7-ffG">
                                 <rect key="frame" x="146" y="20" width="83" height="30"/>
