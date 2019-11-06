@@ -1,0 +1,42 @@
+# Figures
+
+Figures is a calculator app that performs all standard calculations, as well as memory functions, and saving to local storage!
+
+
+# Features!
+
+  - Addition, Subtraction, Multiplication, Division
+  - Add, Remove, or Recall a number from memory
+  - Calculation History
+
+### Built with
+
+What the Fork uses the following dependencies:
+
+* [Swift] - Native iOS!
+
+
+### Installation
+
+Install the dependencies and start the server.
+
+```sh
+$ git clone https://170074@bitbucket.org/170074/figures.git
+$ cd figures
+```
+
+#### Next Run the project
+
+```sh
+select your chosen device or simulator
+click on the 'play' button
+```
+
+
+License
+----
+
+MIT
+
+   [Swift]: <https://developer.apple.com/swift/>
+
