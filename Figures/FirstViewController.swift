@@ -27,7 +27,7 @@ class FirstViewController: UIViewController {
     var Num2 : NSInteger = 0
     var Operand : NSInteger = 0
     var Answer : Double = 0.0
-    var CurrentNumber : String = "0"
+    var CurrentNumber : String = ""
     
     var historyItems: [History] = []
     
@@ -42,7 +42,7 @@ class FirstViewController: UIViewController {
 //            printNumber()
 //        } else {
             Num1 = Int(CurrentNumber)!
-            CurrentNumber = "0"
+            CurrentNumber = ""
             printNumber()
 //        }
     }
@@ -59,6 +59,7 @@ class FirstViewController: UIViewController {
     }
     
     @IBAction func pressNumber(sender: UIButton) {
+        sender.pulsate()
         if sender.tag >= 0 && sender.tag <= 9 {
             CurrentNumber += String(sender.tag)
             printNumber()
@@ -66,51 +67,44 @@ class FirstViewController: UIViewController {
     }
     
     @IBAction func pressOperand(sender: UIButton) {
+        sender.pulsate()
         if sender.tag >= 10 && sender.tag <= 13 {
             Operand = sender.tag
             saveFirstNumber()
         }
         
         if sender.tag == -2 {
-            CurrentNumber = "0"
+            CurrentNumber = ""
+            EquationDone = ""
             lblSum.text = ""
             printNumber()
         }
         
         if sender.tag == 16 {
             Num1 = Int(MemoryNumber)
-            CurrentNumber = "0"
+            CurrentNumber = ""
             printNumber()
         }
     }
     
-//    @IBAction func pressMemory(sender: UIButton) {
-//        if Operand == MemoryAdd {
-//            MemoryNumber = SavedAnswer
-//        }
-//        if Operand == MemoryMinus {
-//            MemoryNumber = 0
-//        }
-//        if Operand == Recall {
-//            CurrentNumber = String(MemoryNumber)
-//            printNumber()
-//        }
-//    }
-    
-    @IBAction func addMemory(_ sender: Any) {
+    @IBAction func addMemory(_ sender: UIButton) {
+        sender.pulsate()
         MemoryNumber = SavedAnswer
     }
     
-    @IBAction func minusMemory(_ sender: Any) {
+    @IBAction func minusMemory(_ sender: UIButton) {
+        sender.pulsate()
         MemoryNumber = 0
     }
     
-    @IBAction func recallMemory(_ sender: Any) {
+    @IBAction func recallMemory(_ sender: UIButton) {
+        sender.pulsate()
         CurrentNumber = String(MemoryNumber)
         printNumber()
     }
     
     @IBAction func calculate(sender: UIButton) {
+        sender.pulsate()
         if Operand == Recall {
             Num2 = Int(MemoryNumber)
         } else {
@@ -151,117 +145,27 @@ class FirstViewController: UIViewController {
         
         Num1 = 0
         Num2 = 0
-        CurrentNumber = String(Answer)
+        CurrentNumber = String(format: "%.2f", Answer)
         Operand = Plus
         printNumber()
         
         Answer = 0.0
-        CurrentNumber = "0"
+        CurrentNumber = ""
     }
     
-//    @IBOutlet weak var lblScreen: UILabel!
-//    @IBOutlet weak var lblSum: UILabel!
-//
-//    var numberDisplayed: Float = 0.0
-//    var previousNumber: Float = 0.0
-//
-//    var performCalculation = false
-//    var operationSymbol = ""
-//    var operation = 0
-//
-//    var equation = ""
-//    var answer: Float = 0.0
-//    var answerText = ""
-//
-//    var historyItems: [History] = []
-//
-//    @IBAction func numbers(_ sender: UIButton) {
-//        if performCalculation == true {
-//            lblScreen.text = String(sender.tag-1)
-//            numberDisplayed = Float(lblScreen.text!)!
-//            performCalculation = false
-//        }
-//        else {
-//            lblScreen.text = lblScreen.text! + String(sender.tag-1)
-//            numberDisplayed = Float(lblScreen.text!)!
-//        }
-//    }
-//
-//    @IBAction func buttons(_ sender: UIButton) {
-//        if lblScreen.text != "" && sender.tag != 11 && sender.tag != 18
-//        {
-//            previousNumber = Float(lblScreen.text!)!
-//
-//            if sender.tag == 12 { //square root
-//                lblScreen.text = "√"
-//                operationSymbol = "√"
-//            }
-//            else if sender.tag == 13 { // percentage
-//                lblScreen.text = "%"
-//                operationSymbol = "%"
-//            }
-//            else if sender.tag == 14 { // divide
-//                lblScreen.text = "÷"
-//                operationSymbol = "÷"
-//            }
-//            else if sender.tag == 15 { // multiply
-//                lblScreen.text = "×"
-//                operationSymbol = "×"
-//            }
-//            else if sender.tag == 16 { // minus
-//                lblScreen.text = "−"
-//                operationSymbol = "−"
-//            }
-//            else if sender.tag == 17 { // plus
-//                lblScreen.text = "+"
-//                operationSymbol = "+"
-//            }
-//            operation = sender.tag
-//            performCalculation = true
-//        }
-//        else if sender.tag == 18 {
-//            if operation == 12 {
-//                answer = previousNumber.squareRoot()
-////                print(answer)
-//                lblScreen.text = String(format: "%0.2f", answer)
-//            }
-//            else if operation == 13 {
-//                answer = (previousNumber / numberDisplayed) * 100
-//                lblScreen.text = String(format: "%0.2f", answer)
-//            }
-//            else if operation == 14 {
-//                answer = previousNumber / numberDisplayed
-//                lblScreen.text = String(format: "%0.2f", answer)
-//            }
-//            else if operation == 15 {
-//                answer = previousNumber * numberDisplayed
-//                lblScreen.text = String(format: "%0.2f", answer)
-//            }
-//            else if operation == 16 {
-//                answer = previousNumber - numberDisplayed
-//                lblScreen.text = String(format: "%0.2f", answer)
-//            }
-//            else if operation == 17 {
-//                answer = previousNumber + numberDisplayed
-//                lblScreen.text = String(format: "%0.2f", answer)
-//            }
-//            lblSum.text = String(format: "%0.0f", previousNumber) + operationSymbol + String(format: "%0.0f", numberDisplayed)
-//
-////            answer = lblScreen.text
-//        }
-//        else if sender.tag == 11 {
-//            lblScreen.text = ""
-//            lblSum.text = ""
-//            previousNumber = 0
-//            numberDisplayed = 0
-//            operation = 0
-//        }
-//
-//        equation = String(lblScreen.text!)
-//        answerText = String(lblSum.text!)
-//
-//        saveAnswer(equation: equation, answer: answerText)
-//    }
+    override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        clearCalc()
+    }
+    
+    func clearCalc() {
+        Num1 = 0
+        Num2 = 0
+        Answer = 0.0
+        CurrentNumber = ""
+        EquationDone = ""
+        lblSum.text = ""
+        printNumber()
+    }
     
     @IBAction func onHistoryTab(_ sender: Any) {
         performSegue(withIdentifier: "toHistory", sender: nil)
