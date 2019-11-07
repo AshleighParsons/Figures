@@ -1,6 +1,7 @@
 # Figures
 
 Figures is a calculator app that performs all standard calculations, as well as memory functions, and saving to local storage!
+It has "shake to clear" functionality and animations when the buttons are pressed.
 
 
 # Features!
@@ -8,6 +9,8 @@ Figures is a calculator app that performs all standard calculations, as well as 
   - Addition, Subtraction, Multiplication, Division
   - Add, Remove, or Recall a number from memory
   - Calculation History
+  - Shake to clear
+  - Button Animations
 
 ### Built with
 
